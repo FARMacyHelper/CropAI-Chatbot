@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farmer's Companion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cal Sans', sans-serif;
+      background-color: #0b3d0b;
+      color: white;
+    }
+
+    header {
+      background-color: #0a2e0a;
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #145214;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    nav button:hover {
+      background-color: #1e7c1e;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 2rem;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .chatbox {
+      background-color: white;
+      color: black;
+      padding: 1rem;
+      border-radius: 8px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .chatbox input {
+      width: 80%;
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    .chatbox button {
+      padding: 0.5rem 1rem;
+    }
+
+    .personalized {
+      background-color: #ffffff10;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🌾 Farmer's Companion</header>
+
+  <nav>
+    <button onclick="showTab('home')">Home</button>
+    <button onclick="showTab('cropai')">CropAI</button>
+    <button onclick="showTab('locate')">Locate You</button>
+    <button onclick="showTab('info')">General Info</button>
+  </nav>
+
+  <div id="home" class="tab-content active">
+    <h2>Welcome, Farmer!</h2>
+    <p>This platform is designed to support you with crop advice, personalized insights, and general agricultural information.</p>
+  </div>
+
+  <div id="cropai" class="tab-content">
+    <h2>CropAI Chatbot</h2>
+    <div class="chatbox">
+      <p><strong>CropAI:</strong> Hello! Ask me anything about your crops.</p>
+      <input type="text" id="userInput" placeholder="Type your question..." />
+      <button onclick="respond()">Send</button>
+      <p id="chatResponse"></p>
+    </div>
+  </div>
+
+  <div id="locate" class="tab-content">
+    <h2>Your Personalized Dashboard</h2>
+    <div class="personalized">
+      <p>📍 Location-based insights will appear here.</p>
+      <p>Weather, soil condition, and crop suggestions tailored to your region.</p>
+    </div>
+  </div>
+
+  <div id="info" class="tab-content">
+    <h2>General Farming Info</h2>
+    <ul>
+      <li>🌱 Best practices for sowing and irrigation</li>
+      <li>🌾 Seasonal crop rotation tips</li>
+      <li>🧪 Soil testing and fertilizer usage</li>
+      <li>🛡️ Pest and disease management</li>
+    </ul>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function respond() {
+      const input = document.getElementById('userInput').value;
+      const response = `You asked: "${input}". CropAI is still learning, but we'll get back to you soon!`;
+      document.getElementById('chatResponse').innerText = response;
+    }
+  </script>
+
+</body>
+</html>
